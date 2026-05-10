@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoeFX - Trang chủ tối ưu</title>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Air Force - Classic Edition",
+      "image": "images/MinhHoa.jpg",
+      "description": "Biểu tượng thời trang vượt thời gian của ShoeFX.",
+      "brand": { "@type": "Brand", "name": "ShoeFX" }
+    }
+    </script>
+
+    <style>
+        /* --- CSS TỔNG THỂ --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f8f9fa; 
+            color: #333; 
+            overflow-x: hidden; 
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        .hero {
+            background: linear-gradient(180deg, #a9c5cf 0%, #e8ecf1 100%);
+            padding: 20px 20px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .top-nav {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        .login-btn {
+            background:  #444;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .brand-logo {
+            font-size: 80px;
+            font-family: 'Brush Script MT', cursive;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .main-actions {
+            display: flex;
+            gap: 15px;
+        }/* --- HIỆU ỨNG NÚT BẤM --- */
+
+/* Trạng thái mặc định của các nút */
+.btn, .buy-now, .login-btn {
+    transition: all 0.3s ease; /* Tạo hiệu ứng chuyển màu mượt mà */
+    cursor: pointer;
+}
+
+/* 1. Nút Bộ sưu tập (btn-white) */
+.btn-white:hover {
+    background-color: #f0f0f0 !important; /* Đổi sang xám nhạt khi di chuột */
+    transform: translateY(-2px); /* Bay nhẹ lên trên */
+}
+.btn-white:active {
+    background-color: #d1d1d1 !important; /* Đậm hơn khi nhấn giữ */
+    transform: translateY(0); /* Lún xuống khi bấm */
+}
+
+/* 2. Nút Về chúng tôi (btn-outline) */
+.btn-outline:hover {
+    background-color: white !important;
+    color: #a9c5cf !important; /* Đổi màu chữ khi nền trắng hiện lên */
+}
+.btn-outline:active {
+    background-color: #e8ecf1 !important;
+}
+
+/* 3. Nút Mua Ngay (Nút đen) */
+.buy-now {
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+.buy-now:hover {
+    background-color: #333 !important; /* Nhạt đi một chút khi di chuột */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Thêm đổ bóng */
+}
+.buy-now:active {
+    background-color: #555 !important;
+    transform: scale(0.98); /* Thu nhỏ lại một chút tạo cảm giác nút bị lún */
+}
+
+/* 4. Nút Đăng nhập trên Menu */
+.login-btn:hover {
+    background-color: #eef5d7 !important;
+}
+.login-btn:active {
+    background-color: #666 !important;
+}
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-white { background: white; color: #333; }
+        .btn-outline { background: transparent; border: 2px solid white; color: white; }
+
+        /* --- CONTENT SECTION --- */
+        .content {
+            max-width: 1000px;
+            margin: -40px auto 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        /* Giao diện cho máy tính */
+.gallery {
+    display: flex;
+    justify-content: center; /* Căn giữa trên máy tính */
+    gap: 15px; 
+    padding: 20px;
+    flex-wrap: nowrap; /* ÉP BUỘC KHÔNG XUỐNG DÒNG */
+    overflow-x: auto; /* Hiện thanh cuộn nếu ảnh tràn màn hình */
+    -webkit-overflow-scrolling: touch; /* Giúp vuốt trên iPhone mượt hơn */
+}
+
+.gallery-item {
+    flex: 0 0 300px; /* Không cho ảnh co lại, giữ cố định 300px trên máy tính */
+    max-width: 300px;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1; /* Giữ ảnh luôn là hình vuông như mẫu thiết kế */
+    object-fit: cover;
+    border-radius: 20px; /* Bo góc mượt mà */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: translateY(-10px); /* Hiệu ứng bay lên khi di chuột */
+}
+
+/* Tối ưu cho ĐIỆN THOẠI */
+@media screen and (max-width: 768px) {
+    .gallery {
+        justify-content: flex-start; /* Căn trái để bắt đầu vuốt từ ảnh đầu tiên */
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .gallery-item {
+        flex: 0 0 70%; /* Mỗi ảnh chiếm 70% chiều rộng màn hình để lộ một phần ảnh tiếp theo (gợi ý vuốt) */
+        min-width: 200px;
+    }
+
+    .gallery::-webkit-scrollbar {
+        display: none; /* Ẩn thanh cuộn cho đẹp, người dùng vẫn vuốt được */
+    }
+}/* --- TỐI ƯU ICON FOOTER --- */
+.footer-col ul li {
+    display: flex;
+    align-items: center; /* Căn giữa icon và chữ trên cùng 1 hàng */
+    gap: 10px;
+}
+
+.footer-col img {
+    width: 18px; /* Làm icon nhỏ lại */
+    height: auto;
+    transition: all 0.3s ease;
+    /* Hiệu ứng làm icon tối đi (biến thành màu đen/xám) */
+    filter: brightness(0) saturate(100%) opacity(0.6); 
+}
+
+/* Hiệu ứng khi di chuột vào (Hover) */
+.footer-col li:hover img, 
+.footer-col a:hover img {
+    /* Trả lại màu gốc hoặc làm sáng lên */
+    filter: brightness(1) saturate(100%) opacity(1);
+    transform: scale(1.2); /* Phóng to nhẹ icon khi hover */
+}
+
+.footer-col a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #777;
+    transition: 0.3s;
+}
+
+.footer-col a:hover {
+    color: #000; /* Chữ cũng đậm lên khi hover */
+}
+
+        /* --- FOOTER CHUẨN 4 CỘT --- */
+        .main-footer {
+            background: white;
+            padding: 60px 10%;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-brand .logo-small {
+            font-size: 28px;
+            font-family: 'Brush Script MT', cursive;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 { margin-bottom: 20px; font-size: 16px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { text-decoration: none; color: #777; font-size: 14px; }
+
+        /* --- MOBILE RESPONSIVE (Dành cho điện thoại) --- */
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column; /* Xếp dọc menu */
+                padding: 15px;
+                border-radius: 20px;
+            }
+            .nav-links { margin-bottom: 10px; }
+            
+            .brand-logo { font-size: 50px; }
+
+           .main-footer {
+        /* Chuyển từ Grid sang Flex để dễ kiểm soát hơn trên mobile */
+        display: flex !important;
+        flex-direction: column !important; 
+        align-items: flex-start !important; /* Đưa nội dung về bên trái thay vì ở giữa */
+        text-align: left !important; /* Chữ căn lề trái cho dễ đọc */
+        padding: 40px 30px !important;
+        gap: 30px !important;
+    }
+
+    .footer-brand, .footer-col {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .footer-col ul {
+        /* Đảm bảo danh sách không bị thụt đầu dòng hay căn giữa */
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 12px !important;
+    }
+
+    /* Nếu bạn muốn các icon mạng xã hội vẫn nằm hàng ngang */
+    .social-icons {
+        display: flex !important;
+        justify-content: flex-start !important;
+        gap: 15px !important;
+        margin-top: 15px !important;
+    }
+
+            .gallery img { width: 90%; }
+            
+            .main-actions { flex-direction: column; width: 100%; align-items: center; }
+            .btn { width: 80%; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <nav class="top-nav">
+            <div class="nav-links">
+                <a href="#">Trang chủ</a>
+                <a href="#">Sản phẩm</a>
+                <a href="#">Liên hệ</a>
+            </div>
+            <a href="#" class="login-btn">Đăng nhập</a>
+        </nav>
+
+        <h1 class="brand-logo">ShoeFX</h1>
+
+        <div class="main-actions">
+            <button class="btn btn-white">Bộ sưu tập</button>
+            <button class="btn btn-outline">About Us</button>
+        </div>  
+    </section>
+
+    <main class="content">
+        <div class="gallery">
+    <div class="gallery-item">
+        <img src="ima/pic1.jpg" alt="Giày ShoeFX 1">
+    </div>
+    <div class="gallery-item">
+        <img src="ima/pic2.jpg" alt="Giày ShoeFX 2">
+    </div>
+    <div class="gallery-item">
+        <img src="ima/pic3.jpg" alt="Giày ShoeFX 3">
+    </div>
+</div>  
+        <h2>Air Force - Classic Edition</h2>
+        <p style="color: #888; margin-top: 10px;">Sản phẩm mang tính biểu tượng cho sự trẻ trung và năng động.</p>
+        <button class="btn" style="background: #000; color: #fff; margin-top: 20px;">Mua Ngay</button>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-brand">
+            <div class="logo-small">ShoeFX</div>
+            <p style="color: #999; font-size: 14px;">Sải bước tự tin cùng ShoeFX. Đồng hành cùng bạn trên mọi nẻo đường.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Sản phẩm</h4>
+            <ul>
+                <li><a href="#">Giày Nam</a></li>
+                <li><a href="#">Giày Nữ</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Hỗ trợ</h4>
+            <ul>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="#">Bảo hành</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+    <h4>Kết nối</h4>
+    <ul>
+        <li>
+            <a href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="x">
+                Twitter
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="ig">
+                Instagram
+            </a>
+        </li>
+    </ul>
+</div>
+    </footer>
+
+</body>
+</html>
